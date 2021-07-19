@@ -8,3 +8,8 @@ class MainPage(BasePage):
 
     def should_be_login_link(self):
         assert self.is_element_present(By.CSS_SELECTOR, "#login_link"), "Login link is not presented"
+
+    def add_to_card_click(self):
+        button = self.browser.find_element_by_class_name('btn-add-to-basket')
+        button.click()
+

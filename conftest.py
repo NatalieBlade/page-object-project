@@ -1,3 +1,4 @@
+import time
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -14,6 +15,7 @@ def pytest_addoption(parser):
 def browser(request):
     browser_name = request.config.getoption("browser_name")
     user_language = request.config.getoption("language")
+
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
         options = Options()
@@ -26,6 +28,8 @@ def browser(request):
         browser = webdriver.Firefox(firefox_profile=fp)
     else:
         print("Browser {} still is not implemented".format(browser_name))
+
     yield browser
     print("\nquit browser..")
+    time.sleep(15)
     browser.quit()
