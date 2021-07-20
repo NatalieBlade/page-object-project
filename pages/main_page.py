@@ -13,3 +13,6 @@ class MainPage(BasePage):
         button = self.browser.find_element_by_class_name('btn-add-to-basket')
         button.click()
 
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)
+

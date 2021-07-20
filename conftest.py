@@ -31,5 +31,5 @@ def browser(request):
 
     yield browser
     print("\nquit browser..")
-    time.sleep(2)
+    # time.sleep(5)
     browser.quit()

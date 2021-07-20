@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 from pages.locators import ProductPageLocators
+from pages.locators import BasketLocators
 
 class ProductPage(BasePage):
 
@@ -22,3 +23,9 @@ class ProductPage(BasePage):
         product_price_on_page = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_ON_PAGE)
         product_price_in_basket = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_BASKET)
         assert product_price_on_page.text == product_price_in_basket.text, "Prices are not equal"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*BasketLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
+
+    def should_be_disappeared(self):
+        assert self.is_disappeared(*BasketLocators.DISAPPEARENCE_MESSAGE), "Message is not disapeared, but should be"
